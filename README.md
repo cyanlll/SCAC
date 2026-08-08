@@ -1,5 +1,4 @@
-# Training-free Video Corpus Moment Retrieval via
-Synergistic Collaboration and Adaptive Calibration
+# Training-free Video Corpus Moment Retrieval via Synergistic Collaboration and Adaptive Calibration
 
 # Requiments
 Please install the necessary dependencies listed in requirements.txt.
