@@ -1,0 +1,54 @@
+dataset:
+  name: cha
+runtime:
+  device: cuda:0
+  top_k: 200
+localization:
+  stride: 23
+  max_stride_factor: 0.5
+  calibration_step: 1
+  overlap_threshold: 0.3
+  cc: 1
+paths:
+  query_chain_jsonl: ./data/charades/query_chain.jsonl
+  video_feature_root: ./data/features/blip1
+  text_feature_root: ./data/features/blip1
+  interval_file: ./outputs/charades/intervals_top200.jsonl
+retrieval:
+  query_feature_root: ./data/features/blip1/cha_query_chain
+  video_event_feature_root: ./data/features/blip1/cha_video_chain
+  output_pkl: ./outputs/charades/retrieval.pkl
+evaluation:
+  generate_intervals: true
+  oracle_localization: true
+query_chain:
+  input_json: ./data/charades/annotations.json
+  raw_output_json: ./outputs/charades/query_chain_raw.json
+  prompt_file: ./prompts/query_event_chain.txt
+  model: llama3.1:8b-instruct-fp16
+  temperature: 0.7
+  max_tokens: 256
+  retries: 50
+caption:
+  image_root: ./data/charades/keyframes
+  output_jsonl: ./outputs/charades/video_captions.jsonl
+  model_path: ./checkpoints/blip-image-captioning-large
+  device: cpu
+features:
+  text:
+    save_root: ./data/features/blip1/cha_query_chain
+    encoder_mode: legacy_qformer
+    model_name: blip_image_text_matching
+    model_type: large
+  video:
+    input_root: ./data/charades/videos
+    save_root: ./data/features/blip1/cha
+    fps: 3
+    batch_size: 128
+  video_chain:
+    input_root: ./data/charades/video_event_clips
+    save_root: ./data/features/blip1/cha_video_chain
+    fps: 3
+    batch_size: 256
+pipeline:
+  stages: [retrieve, evaluate]
