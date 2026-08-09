@@ -1,0 +1,10 @@
+numpy
+torch
+torchvision
+tqdm
+requests
+Pillow
+transformers
+decord
+salesforce-lavis
+PyYAML
