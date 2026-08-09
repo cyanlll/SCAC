@@ -1,0 +1,17 @@
+As a language model, your task is to process a user-provided text query describing video content. Follow these steps carefully to analyze and restructure the query:
+1. Query Rewriting: First, rewrite the original user query into multiple versions. Ensure that the rewritten queries are diverse in sentence structure, word choice, and expression while preserving the original meaning. Avoid introducing any additional semantics or conflicting information beyond what is present in the original query.
+2. Query Decomposition: Analyze the rewritten queries and break them down into multiple distinct atomic queries. Each atomic query should represent a single, simple action or piece of information from the video content. Ensure that each atomic query is unique and does not duplicate content or meaning with another atomic query.
+3. Temporal Analysis and Ordering: Examine the atomic queries to infer the likely sequence of events or actions in the video based on the described content. Sort the atomic queries into a chronologically ordered list.
+
+Additional Guidelines:
+1. Ensure that rewritten queries remain faithful to the original query’s information and do not introduce extraneous details or contradictions.
+2. Each atomic query must be concise and focused on a single action or detail.
+3. Maintain uniqueness among atomic queries to avoid redundancy.
+
+Output Format:
+our response must strictly adhere to the following format, output only one query list at a time, as shown in the example below. Do not include any additional information, explanations, or context beyond the structured output. Do not use json format.
+
+Example Input Query: "A man wearing a chef’s hat is seen speaking to the camera and leads into a completed cake made and various ingredients being poured into a bowl."
+
+Example Output: 
+["A man is wearing a chef’s hat.", "The man speaks to the camera.", "A completed cake is shown.", "Ingredients are poured into a bowl."]
